@@ -1,0 +1,232 @@
+/* 1. Root Variables & Reset */
+:root {
+    --bg-color: #f0f2f5;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --primary: #2196F3;
+    --primary-dark: #1976D2;
+    --text-main: #333;
+    --text-muted: #666;
+    --transition: all 0.5s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Layout & Wrapper */
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    transition: var(--transition);
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* 3. Themes (Dynamic Backgrounds) */
+.theme-clear   { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important; }
+.theme-rain    { background: linear-gradient(135deg, #485563 0%, #29323c 100%) !important; color: white !important; }
+.theme-cloudy  { background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%) !important; }
+.theme-snow    { background: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%) !important; }
+.theme-default { background: #e2e8f0; }
+
+/* 4. Header & Search Form */
+header {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.search-group {
+    display: flex;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+/* 5. Weather Card Display */
+.weather-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.location-name {
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+
+.weather-description {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+}
+
+.main-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.temp-big {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+/* 6. Weather Stats Grid */
+.weather-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.weather-card, .temp-big, .location-name {
+    transition: color 0.5s ease;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.stat-item .value {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* 7. Toggle Unit Switch */
+.unit-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 22px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* 8. Animations & Utilities */
+.hidden {
+    display: none;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
