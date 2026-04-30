@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSky Pro</title>
+    <link rel="stylesheet" href="../src/styles.css">
+</head>
+<body>
+        <div id="app" class="theme-default">
+            <header>
+                <h1>WeatherSky</h1>
+                <form id="search-form">
+                    <div class="search-group">
+                        <input type="text" id="search-input" placeholder="Enter city..." required>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+                <div class="unit-toggle">
+                    <span>°C</span>
+                    <label class="switch">
+                        <input type="checkbox" id="unit-checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <span>°F</span>
+                </div>
+            </header>
+
+            <main id="weather-display">
+                <div id="loading" class="hidden">Loading...</div>
+                <div id="content"></div>
+            </main>
+        </div>
+    </div>
+    <script type="module" src="../src/index.js"></script>
+</body>
+</html>
